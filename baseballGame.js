@@ -5,10 +5,12 @@ const rl = readline.createInterface({
   output: process.stdout
 });
 
+//랜덤한 숫자를 생성
 function getRandomNumber() { 
     return Math.floor(Math.random()*10)
 }
 
+// 퀴즈문제를 만듬 
 function generateQuiz() {
   let quiz = "";
   for (let i = 0; i < 3; i++) {
@@ -19,9 +21,10 @@ function generateQuiz() {
 
 const quiz = generateQuiz();
 //console.log(quiz);  정답입니다.
-var pattern1 = /[0-9]/;
+var pattern1 = /[0-9]/; 
 quizCount = 1;
 console.log("컴퓨터가 숫자를 생성하였습니다. 답을 맞춰보세요!");
+
 
 rl.on("line", function(x) {
   if(x===""||!pattern1.test(x)) console.log("숫자를 입력하세요.")
@@ -43,6 +46,7 @@ rl.on("line", function(x) {
   process.exit();
 });
 
+// 스트라이크인지 볼인지 판단
 function checkQuiz(x,y) {
   strike =0;
   ball =0;
