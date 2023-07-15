@@ -18,7 +18,7 @@ function generateQuiz() {
 }
 
 const quiz = generateQuiz();
-console.log(quiz); 
+//console.log(quiz);  정답입니다.
 var pattern1 = /[0-9]/;
 quizCount = 1;
 console.log("컴퓨터가 숫자를 생성하였습니다. 답을 맞춰보세요!");
