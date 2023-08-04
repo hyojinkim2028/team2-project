@@ -86,7 +86,7 @@ document
       return alert("댓글을 입력하세요");
     }
     try {
-      await axios.post("/comments", { name, comment });
+      await axios.post("/comments", { name, comment }); //
       getComment();
     } catch (err) {
       console.error(err);
