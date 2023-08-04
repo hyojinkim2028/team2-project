@@ -1,12 +1,12 @@
 const express = require("express");
-const Comment = require("../schemas/comment"); //
+const Comment = require("../schemas/comment");
 const router = express.Router();
 
 router
   .route("/")
   .get(async (req, res, next) => {
     try {
-      const comments = await Comment.find({}); //
+      const comments = await Comment.find({});
       res.json(comments);
     } catch (err) {
       console.error(err);
@@ -17,7 +17,7 @@ router
     try {
       const comment = await Comment.create({
         name: req.body.name,
-        comment: req.body.comment, //
+        comment: req.body.comment,
       });
       console.log(comment);
       res.status(201).json(comment);

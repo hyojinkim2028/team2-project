@@ -4,6 +4,7 @@ const { Schema } = mongoose;
 const {
   Types: { ObjectId },
 } = Schema;
+
 const commentSchema = new Schema({
   name: {
     type: String,
@@ -11,6 +12,7 @@ const commentSchema = new Schema({
   },
 
   comment: String,
+
   createdAt: {
     type: Date,
     default: Date.now,
