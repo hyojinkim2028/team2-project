@@ -1,15 +1,15 @@
 const mongoose = require("mongoose");
 
 const { Schema } = mongoose;
+const {
+  Types: { ObjectId },
+} = Schema;
 const userSchema = new Schema({
   name: {
     type: String,
     required: true,
   },
-  // age: {
-  //   type: Number,
-  //   required: true,
-  // },
+
   comment: String,
   createdAt: {
     type: Date,
