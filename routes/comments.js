@@ -1,13 +1,13 @@
 const express = require("express");
-const User = require("../schemas/user");
+const Comment = require("../schemas/comment"); //
 const router = express.Router();
 
 router
   .route("/")
   .get(async (req, res, next) => {
     try {
-      const users = await User.find({});
-      res.json(users);
+      const comments = await Comment.find({}); //
+      res.json(comments);
     } catch (err) {
       console.error(err);
       next(err);
@@ -15,12 +15,12 @@ router
   }) //댓글 작성
   .post(async (req, res, next) => {
     try {
-      const user = await User.create({
+      const comment = await Comment.create({
         name: req.body.name,
         comment: req.body.comment, //
       });
-      console.log(user);
-      res.status(201).json(user);
+      console.log(comment);
+      res.status(201).json(comment);
     } catch (err) {
       console.error(err);
       next(err);
@@ -32,7 +32,7 @@ router
   .route("/:id")
   .patch(async (req, res, next) => {
     try {
-      const result = await User.updateOne(
+      const result = await Comment.updateOne(
         {
           _id: req.params.id, //
         },
@@ -48,7 +48,7 @@ router
   })
   .delete(async (req, res, next) => {
     try {
-      const result = await User.deleteOne({
+      const result = await Comment.deleteOne({
         _id: req.params.id,
       });
       res.json(result);

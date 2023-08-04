@@ -4,7 +4,7 @@ const { Schema } = mongoose;
 const {
   Types: { ObjectId },
 } = Schema;
-const userSchema = new Schema({
+const commentSchema = new Schema({
   name: {
     type: String,
     required: true,
@@ -17,4 +17,4 @@ const userSchema = new Schema({
   },
 });
 
-module.exports = mongoose.model("User", userSchema);
+module.exports = mongoose.model("Comment", commentSchema);
