@@ -49,7 +49,7 @@ async function getComment() {
         // 삭제 클릭 시
         try {
           await axios.delete(`/comments/${comment._id}`);
-          getUser(comment._id);
+          getComment(comment._id);
         } catch (err) {
           console.error(err);
         }
