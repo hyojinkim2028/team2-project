@@ -5,6 +5,11 @@ const {
   Types: { ObjectId },
 } = Schema;
 
+function getCurrentDate() {
+  const result = new Date().toLocaleString().substring(0, 20);
+  return result;
+}
+
 const commentSchema = new Schema({
   name: {
     type: String,
@@ -14,9 +19,8 @@ const commentSchema = new Schema({
   comment: String,
 
   createdAt: {
-    type: Date,
-    default: new Date(),
-    //default: Date.now(),
+    type: String,
+    default: getCurrentDate(),
   },
 });
 

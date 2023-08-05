@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>2조 홈페이지</title>
+    <style>
+
+            
+        @font-face {
+        font-family: 'RixInooAriDuriR';
+        src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2207-01@1.0/RixInooAriDuriR.woff2') format('woff2');
+        font-weight: normal;
+        font-style: normal;
+        }
+        @font-face {
+        font-family: 'Cafe24Supermagic-Bold-v1.0';
+        src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/Cafe24Supermagic-Bold-v1.0.woff2') format('woff2');
+        font-weight: 700;
+        font-style: normal;
+        }
+
+        table { 
+
+          border-collapse: separate;
+          border-spacing: 1px;
+          text-align: left;
+          line-height: 1.5;
+          border-top: 1px solid #ccc;
+          margin : 20px 10px;
+          font-family: 'Cafe24Supermagic-Bold-v1.0';
+
+        }
+
+        table th {
+          width: 150px;
+          padding: 10px;
+          font-weight: bold;
+          vertical-align: top;
+          border-bottom: 1px solid #ccc;
+          
+        }
+        
+        
+        table td {
+          width: 350px;
+          padding: 10px;
+          vertical-align: top;
+          border-bottom: 1px solid #ccc;
+          }
+        .section {
+            flex: 1;
+            padding: 1rem;
+            background-color: #ffffff;
+            margin-bottom: 2rem; /* 섹션 사이에 2rem의 간격 추가 */
+            border-radius: 20px 20px;
+            border: 5px solid #000000;
+        }
+        .team {
+            font-family: 'Cafe24Supermagic-Bold-v1.0';
+            font-size: 20px;
+            color: #000000;
+            padding: 1rem;
+            background-color: #ffffffba;
+            margin-bottom: 2rem;
+            flex: 1;
+            border-radius: 40px 80px;
+            border: 5px solid #0026ff;
+            
+        }
+        .btn2 {
+            background-color: #0026ff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-family: 'Cafe24Supermagic-Bold-v1.0';
+            font-size: 16px;
+            cursor: pointer;
+            letter-spacing : 2px;
+            height: 30px;
+            width: 100px;
+            margin-bottom: 30px;
+        }
+
+
+
+    </style>
+</head>
+<body>
+  
+    <!-- 등록 -->
+    <section class="section">
+      <div>
+        <form id="comment-form">
+
+            <legend><p style="font-weight:bolder; font-size: 50px; font-family: 'Cafe24Supermagic-Bold-v1.0' ">방명록</p></legend>
+            <div><input class="team" id="username" type="text" placeholder="이름"></div>
+            <div><textarea class="team" id="comment" rows="2" cols="50" placeholder="댓글을 입력하세요"></textarea></div>
+            <button class="btn2" type="submit">등록</button>
+
+        </form>
+      </div>
+      
+
+      <!-- 리스트 -->
+      <table id="comment-list">
+        <thead>
+        <tr>
+          <th>이름</th>
+          <th>댓글</th>
+          <th>작성된 시간</th>
+          <th>수정</th>
+          <th>삭제</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for user in users %}
+        <tr>
+          <td>{{user.id}}</td>
+          <td>{{user.name}}</td>
+          <td>{{user.comment}}</td>   
+        </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+  </section>
+
+</body>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="/index.js"></script>
+</html>
