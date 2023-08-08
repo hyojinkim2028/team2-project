@@ -5,8 +5,8 @@ const connect = () => {
     mongoose.set("debug", true);
   }
   mongoose
-    .connect("mongodb://127.0.0.1:27017/comments_db", {
-      dbName: "comments_db",
+    .connect("mongodb://127.0.0.1:27017/prac", {
+      dbName: "prac",
       useNewUrlParser: true,
     })
     .then(() => {
