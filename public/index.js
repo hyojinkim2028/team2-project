@@ -41,8 +41,9 @@ async function getComment() {
           } catch (err) {
             console.error(err);
           }
+        } else {
+          alert("비밀번호가 틀렸습니다. 다시 시도하세요");
         }
-        return alert("비밀번호가 틀렸습니다. 다시 시도하세요");
       });
 
       //댓글 삭제
@@ -154,8 +155,9 @@ document.getElementById("manager").addEventListener("click", function () {
               } catch (err) {
                 console.error(err);
               }
+            } else {
+              return alert("비밀번호가 틀렸습니다. 다시 시도하세요");
             }
-            return alert("비밀번호가 틀렸습니다. 다시 시도하세요");
           });
 
           //댓글 삭제

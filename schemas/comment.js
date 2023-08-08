@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const { runtime } = require("nunjucks");
 
 const { Schema } = mongoose;
 const {
@@ -6,7 +7,10 @@ const {
 } = Schema;
 
 function getCurrentDate() {
-  const result = new Date().toLocaleString().substring(0, 20);
+  const result = new Date().toLocaleString("ko-KR").substring(0, 20);
+  if (result[result.length - 1] == ":") {
+    return new Date().toLocaleString("ko-KR").substring(0, 19);
+  }
   return result;
 }
 
