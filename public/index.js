@@ -87,7 +87,7 @@ document
     e.preventDefault();
     const name = e.target.username.value;
     const comment = e.target.comment.value;
-    const password = e.target.password.value; //
+    const password = e.target.password.value;
 
     if (!name) {
       return alert("이름을 입력하세요");
