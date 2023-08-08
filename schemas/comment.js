@@ -10,8 +10,9 @@ function getCurrentDate() {
   const result = new Date().toLocaleString("ko-KR").substring(0, 20);
   if (result[result.length - 1] == ":") {
     return new Date().toLocaleString("ko-KR").substring(0, 19);
+  } else {
+    return result;
   }
-  return result;
 }
 
 const commentSchema = new Schema({
