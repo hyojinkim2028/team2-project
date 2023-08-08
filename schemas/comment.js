@@ -18,6 +18,11 @@ const commentSchema = new Schema({
 
   comment: String,
 
+  password: {
+    type: Number,
+    required: true,
+  }, //
+
   createdAt: {
     type: String,
     default: getCurrentDate(),

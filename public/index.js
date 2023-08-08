@@ -28,30 +28,39 @@ async function getComment() {
       edit.textContent = "수정";
       edit.addEventListener("click", async () => {
         // 수정 클릭 시
-        const newComment = prompt("바꿀 내용을 입력하세요");
-        if (!newComment) {
-          return alert("내용을 반드시 입력하셔야 합니다");
+        const password = prompt("비밀번호를 입력하세요");
+        if (Number(password) === comment.password) {
+          const newComment = prompt("바꿀 내용을 입력하세요");
+          if (!newComment) {
+            return alert("내용을 반드시 입력하셔야 합니다");
+          }
+          try {
+            await axios.patch(`/comments/${comment._id}`, {
+              comment: newComment,
+            });
+            getComment(comment._id);
+          } catch (err) {
+            console.error(err);
+          }
         }
-        try {
-          await axios.patch(`/comments/${comment._id}`, {
-            comment: newComment,
-          });
-          getComment(comment._id);
-        } catch (err) {
-          console.error(err);
-        }
+        return alert("비밀번호가 틀렸습니다. 다시 시도하세요");
       });
 
       //댓글 삭제
       const remove = document.createElement("button");
       remove.textContent = "삭제";
       remove.addEventListener("click", async () => {
-        // 삭제 클릭 시
-        try {
-          await axios.delete(`/comments/${comment._id}`);
-          getComment(comment._id);
-        } catch (err) {
-          console.error(err);
+        const password = prompt("비밀번호를 입력하세요");
+        if (Number(password) === comment.password) {
+          // 삭제 클릭 시
+          try {
+            await axios.delete(`/comments/${comment._id}`);
+            getComment(comment._id);
+          } catch (err) {
+            console.error(err);
+          }
+        } else {
+          return alert("비밀번호가 틀렸습니다. 다시 시도하세요");
         }
       });
       // 버튼 추가
@@ -77,6 +86,7 @@ document
     e.preventDefault();
     const name = e.target.username.value;
     const comment = e.target.comment.value;
+    const password = e.target.password.value; //
 
     if (!name) {
       return alert("이름을 입력하세요");
@@ -85,12 +95,16 @@ document
     if (!comment) {
       return alert("댓글을 입력하세요");
     }
+    if (!password) {
+      return alert("비밀번호를 입력하세요");
+    }
     try {
-      await axios.post("/comments", { name, comment }); //
+      await axios.post("/comments", { name, comment, password });
       getComment();
     } catch (err) {
       console.error(err);
     }
     e.target.username.value = "";
     e.target.comment.value = "";
+    e.target.password.value = "";
   });

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <title>간단한 웹사이트</title>
+    <title>2조 홈페이지</title>
     <style>
         @font-face {
             font-family: 'RixInooAriDuriR';
@@ -382,92 +382,6 @@
         document.getElementById('operate').style.display = 'none';
     }
 
-    function login(){
-            let operatepassword = $('#Login2').val();
-            if (operatepassword == ''){
-                alert('비밀번호를 입력해주세요')
-            } else {
-                if (operatepassword == '1234'){
-                    alert('비밀번호 입력 완료, 모든 방명록을 삭제합니다...')
-                    closeoperater();
-            } else {
-                alert('비밀번호가 아닙니다, 다시 입력하세요')
-            }}
-        }
-        let comments = [];
-        // 댓글 작성 함수
-        function addComment() {
-            const name = document.getElementById("name").value;
-            const comment = document.getElementById("comment").value;
-            const password = document.getElementById("password").value;
-            const time = new Date().toLocaleString();
-            const id = new Date().getTime().toString();
-
-            const newComment = { id, name, comment, password, time };
-            comments.push(newComment);
-            updateCommentList();
-            clearCommentForm();
-        }
-
-        // 댓글 목록 업데이트 함수
-        function updateCommentList() {
-            const commentList = document.querySelector(".comment-list");
-            commentList.innerHTML = "";
-            comments.forEach((comment) => {
-                const commentItem = document.createElement("div");
-                commentItem.classList.add("comment-item");
-
-                const commentContent = `
-                    <span class="comment-name">${comment.name}</span>
-                    <span class="comment-text">${comment.comment}</span>
-                    <span class="comment-time">${comment.time}</span>
-                    <button class="btn2" onclick="editComment('${comment.id}')">수정</button>
-                    <button class="btn2" onclick="deleteComment('${comment.id}')">삭제</button>
-                `;
-
-                commentItem.innerHTML = commentContent;
-                commentList.appendChild(commentItem);
-            });
-        }
-        // 댓글 작성 폼 비우기
-        function clearCommentForm() {
-            document.getElementById("name").value = "";
-            document.getElementById("comment").value = "";
-            document.getElementById("password").value = "";
-        }
-
-        // 댓글 삭제 함수
-        function deleteComment(commentId) {
-            const password = prompt("비밀번호를 입력하세요");
-            if (password) {
-                const comment = comments.find((c) => c.id === commentId);
-                if (comment.password === password) {
-                    comments = comments.filter((c) => c.id !== commentId);
-                    updateCommentList();
-                } else {
-                    alert("비밀번호가 올바르지 않습니다.");
-                }
-            }
-        }
-        // 댓글 수정 함수
-        function editComment(commentId) {
-            const password = prompt("비밀번호를 입력하세요");
-            if (password) {
-                const comment = comments.find((c) => c.id === commentId);
-                if (comment.password === password) {
-                    const newName = prompt("이름", comment.name);
-                    const newComment = prompt("댓글 내용", comment.comment);
-
-                    if (newName && newComment) {
-                        comment.name = newName;
-                        comment.comment = newComment;
-                        updateCommentList();
-                    }
-                } else {
-                    alert("비밀번호가 올바르지 않습니다.");
-                }
-            }
-        }
     function openVideoModal() {
         document.getElementById('videoModal').style.display = 'flex';
     }
@@ -483,17 +397,7 @@
     <header>
         <h1 style="position: relative; z-index: 1;">JUST DO DEVELOP</h1>
     </header>
-<!-- 
-    <div id="videoModal" class="videomodal" style="display: flex;">
-        <div class="modal-content">
-             동영상을 여기에 삽입하세요
-            <video width="800" height="700" controls>
-                <source src="https://blog.naver.com/unx875/223175546704" type="video/mp4">
-            </video>
-            <button class="btn2" onclick="closeVideoModal()">닫기</button>
-        </div>
-    </div>
-    -->
+    
     <nav>
         <ul>
             <li><a href="#">Let's be Developer! 개발자로 나아가는중...</a></li>
@@ -577,6 +481,7 @@
               <legend><p style="font-weight:bolder; font-size: 50px; font-family: 'Cafe24Supermagic-Bold-v1.0' ">방명록</p></legend>
               <div><input class="team" id="username" type="text" placeholder="이름"></div>
               <div><textarea class="team" id="comment" rows="2" cols="50" placeholder="댓글을 입력하세요"></textarea></div>
+              <div><input type="password" class="team" id="password" placeholder="비밀번호"></div>
               <button class="btn2" type="submit">등록</button>
   
           </form>
