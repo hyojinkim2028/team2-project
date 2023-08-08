@@ -7,7 +7,7 @@ const {
 } = Schema;
 
 function getCurrentDate() {
-  const result = new Date().toLocaleString("ko-KR").substring(0, 20);
+  const result = new Date().toLocaleString().substring(0, 20);
   return result;
 }
 
@@ -26,7 +26,7 @@ const commentSchema = new Schema({
 
   createdAt: {
     type: String,
-    default: getCurrentDate(),
+    default: getCurrentDate,
   },
 });
 
