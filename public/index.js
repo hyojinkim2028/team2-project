@@ -28,7 +28,7 @@ async function getComment() {
       edit.addEventListener("click", async () => {
         // 수정 클릭 시
         const password = prompt("비밀번호를 입력하세요");
-        if (Number(password) === comment.password) {
+        if (Number(password) == comment.password) {
           const newComment = prompt("바꿀 내용을 입력하세요");
           if (!newComment) {
             return alert("내용을 반드시 입력하셔야 합니다");
@@ -50,7 +50,7 @@ async function getComment() {
       remove.textContent = "삭제";
       remove.addEventListener("click", async () => {
         const password = prompt("비밀번호를 입력하세요");
-        if (Number(password) === comment.password) {
+        if (Number(password) == comment.password) {
           // 삭제 클릭 시
           try {
             await axios.delete(`/comments/${comment._id}`);
