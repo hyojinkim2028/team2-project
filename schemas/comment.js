@@ -2,14 +2,9 @@ const mongoose = require("mongoose");
 const { runtime } = require("nunjucks");
 
 const { Schema } = mongoose;
-const {
-  Types: { ObjectId },
-} = Schema;
-
-function getCurrentDate() {
-  const result = new Date().toLocaleString().substring(0, 20);
-  return result;
-}
+// const {
+//   Types: { ObjectId },
+// } = Schema;
 
 const commentSchema = new Schema({
   name: {
@@ -25,8 +20,8 @@ const commentSchema = new Schema({
   }, //
 
   createdAt: {
-    type: String,
-    default: getCurrentDate,
+    type: Date,
+    default: Date.now,
   },
 });
 
