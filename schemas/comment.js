@@ -20,8 +20,8 @@ const commentSchema = new Schema({
   }, //
 
   createdAt: 
-    type: String,
-    default: new Date.tolocaleString(),
+    type: Date,
+    default: Date.now,
   },
 });
 
