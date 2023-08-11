@@ -1,7 +1,9 @@
 const express = require("express");
 const Comment = require("../schemas/comment");
 const router = express.Router();
+const moment = require("moment");
 
+//moment.format("YYYY-MM-DD hh:mm:ss")
 router
   .route("/")
   .get(async (req, res, next) => {
@@ -18,7 +20,7 @@ router
       const comment = await Comment.create({
         name: req.body.name,
         comment: req.body.comment,
-        password: req.body.password, //
+        password: req.body.password, //,
       });
       console.log(comment);
       res.status(201).json(comment);
