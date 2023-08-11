@@ -1,9 +1,7 @@
 const express = require("express");
 const Comment = require("../schemas/comment");
 const router = express.Router();
-const moment = require("moment");
 
-//moment.format("YYYY-MM-DD hh:mm:ss")
 router
   .route("/")
   .get(async (req, res, next) => {
