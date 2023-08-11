@@ -19,9 +19,9 @@ const commentSchema = new Schema({
     required: true,
   }, //
 
-  createdAt: {
+  createdAt: 
     type: String,
-    default: new Date().toLocaleString(),
+    default: new Date(),
   },
 });
 
