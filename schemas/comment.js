@@ -19,7 +19,7 @@ const commentSchema = new Schema({
     required: true,
   }, //
 
-  createdAt: 
+  createdAt: {
     type: Date,
     default: Date.now,
   },
