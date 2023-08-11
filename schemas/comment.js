@@ -21,7 +21,7 @@ const commentSchema = new Schema({
 
   createdAt: 
     type: String,
-    default: new Date(),
+    default: new Date.tolocaleString(),
   },
 });
 
